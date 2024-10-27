@@ -1,0 +1,26 @@
+<!-- chat.component.html -->
+<div class="chat-container">
+  <div class="messages-container">
+    <div *ngFor="let message of messages"
+         [ngClass]="{'user-message': message.isUser, 'bot-message': !message.isUser}"
+         class="message">
+      <div class="message-content">
+        {{ message.text }}
+      </div>
+      <div class="message-timestamp">
+        {{ message.timestamp  }}
+      </div>
+    </div>
+  </div>
+
+  <div class="input-container">
+    <input #messageInput
+           type="text"
+           (keyup)="sendMessage($event)"
+           placeholder="Tapez votre message..."
+           class="message-input">
+    <button (click)="sendMessage()" class="send-button">
+      Envoyer
+    </button>
+  </div>
+</div>
